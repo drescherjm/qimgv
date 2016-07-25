@@ -169,6 +169,8 @@ void ThumbnailLabel::paintEvent(QPaintEvent *event) {
         if(isHighlighted()) {
             painter.fillRect(highlightRect, *highlightColor);
             //painter->fillRect(shadowRect, *shadowGradient);
+        } else if(hovered) {
+            painter.fillRect(this->rect().adjusted(borderW,borderH,-borderW,-borderH), QColor(170,170,170,30));
         }
     }
 }
@@ -186,6 +188,18 @@ QSizeF ThumbnailLabel::sizeHint(Qt::SizeHint which, const QSizeF &constraint) co
             break;
     }
     return constraint;
+}
+
+void ThumbnailLabel::enterEvent(QEvent *event) {
+    hovered = true;
+    update();
+    event->ignore();
+}
+
+void ThumbnailLabel::leaveEvent(QEvent *event) {
+    hovered = false;
+    update();
+    event->ignore();
 }
 
 ThumbnailLabel::~ThumbnailLabel() {
