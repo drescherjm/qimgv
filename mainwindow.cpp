@@ -10,6 +10,7 @@ MainWindow::MainWindow() :
     borderlessEnabled(false),
     desktopWidget(NULL)
 {
+    myTimer.start();
     resize(1100, 700);
     setMinimumSize(QSize(400, 300));
 #ifdef __linux__
@@ -297,7 +298,11 @@ void MainWindow::openVideo(Clip *clip) {
 }
 
 void MainWindow::open(QString path) {
+    int nMilliseconds = myTimer.elapsed();
+    qDebug() << "init time:" << nMilliseconds;
     core->loadImageBlocking(path);
+    nMilliseconds = myTimer.elapsed();
+    qDebug() << "open time: " << nMilliseconds;
 }
 
 void MainWindow::openImage(QPixmap *pixmap) {

@@ -16,10 +16,11 @@ RC_FILE = qimgv.rc
 
 QMAKE_CXXFLAGS += -Wall
 QMAKE_CXXFLAGS += -std=c++11
-QMAKE_CXXFLAGS_RELEASE -= -O
-QMAKE_CXXFLAGS_RELEASE -= -O1
-QMAKE_CXXFLAGS_RELEASE -= -O2
-QMAKE_CXXFLAGS_RELEASE *= -O3
+
+CONFIG += c++11 sse sse2 mmx
+
+QMAKE_CXXFLAGS_RELEASE += -O3 -msse4.1 -mssse3 -msse3 -msse2 -msse -mmmx
+QMAKE_CXXFLAGS_DEBUG += -O3 -msse4.1 -mssse3 -msse3 -msse2 -msse -mmmx
 
 SOURCES += main.cpp\
         mainwindow.cpp \

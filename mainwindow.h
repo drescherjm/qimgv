@@ -90,6 +90,7 @@ private slots:
     void calculatePanelTriggerArea();
 
 private:
+    QTime myTimer;
     Core *core;
     textOverlay *infoOverlay, *messageOverlay;
     ControlsOverlay *controlsOverlay;
