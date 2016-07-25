@@ -1,21 +1,17 @@
 #ifndef VIDEOPLAYER_H
 #define VIDEOPLAYER_H
 
-#include <QGraphicsView>
-#include <QGraphicsScene>
-#include <QGraphicsVideoItem>
-#include <QGraphicsSimpleTextItem>
-#include <QGraphicsWidget>
 #include <QWidget>
-#include <qmediaplayer.h>
-#include <qvideowidget.h>
 #include <QMouseEvent>
-#include <qvideosurfaceformat.h>
 #include <QDebug>
 #include "../sourceContainers/clip.h"
 #include "../settings.h"
+#include <QtAV/QtAV>
+#include <QtAVWidgets>
+#include <QVBoxLayout>
+#include <QMessageBox>
 
-class VideoPlayer : public QGraphicsView
+class VideoPlayer : public QWidget
 {
     Q_OBJECT
 public:
@@ -27,25 +23,17 @@ signals:
 
 public slots:
     void displayVideo(Clip *clip);
-    void play();
-    void replay();
+    void start();
+    void restart();
     void stop();
     void readSettings();
 
-private slots:
-    void handleError();
-    void handleMediaStatusChange(QMediaPlayer::MediaStatus status);
-    void handlePlayerStateChange(QMediaPlayer::State status);
-    void adjustVideoSize();
-    void transformVideo();
-
 private:
     Clip *clip;
-    QMediaPlayer mediaPlayer;
-    QGraphicsScene *scene;
-    QGraphicsVideoItem *videoItem;
-    QGraphicsSimpleTextItem *textMessage;
-    int retries;
+
+    // QtAV
+    QtAV::VideoOutput *m_vo;
+    QtAV::AVPlayer *m_player;
 
 protected:
     virtual void mouseMoveEvent(QMouseEvent *event);
