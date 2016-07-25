@@ -16,5 +16,7 @@ void ClickableWidget::mousePressEvent(QMouseEvent *event) {
         case Qt::MiddleButton:
             emit pressedMiddle(event->pos());
             break;
+        default:
+            break;
     }
 }

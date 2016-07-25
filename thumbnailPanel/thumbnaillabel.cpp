@@ -138,7 +138,10 @@ void ThumbnailLabel::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     if(thumbnail) {
         if(thumbnail->image) {
-            painter.setOpacity(currentOpacity);
+            if(hovered)
+                painter.setOpacity(1.0f);
+            else
+                painter.setOpacity(currentOpacity);
             painter.drawPixmap(borderW, borderH, *thumbnail->image);
         }
 
@@ -169,8 +172,6 @@ void ThumbnailLabel::paintEvent(QPaintEvent *event) {
         if(isHighlighted()) {
             painter.fillRect(highlightRect, *highlightColor);
             //painter->fillRect(shadowRect, *shadowGradient);
-        } else if(hovered) {
-            painter.fillRect(this->rect().adjusted(borderW,borderH,-borderW,-borderH), QColor(170,170,170,30));
         }
     }
 }

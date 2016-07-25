@@ -7,7 +7,7 @@
 #include "../sourceContainers/clip.h"
 #include "../settings.h"
 #include <QtAV/QtAV>
-#include <QtAVWidgets>
+#include <QtAVWidgets/QtAVWidgets>
 #include <QVBoxLayout>
 #include <QMessageBox>
 

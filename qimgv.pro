@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets concurrent
+QT       += core gui widgets concurrent avwidgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia multimediawidgets
+#LIBS += -lQtAV -lQtAVWidgets
 
 msvc: LIBS += -luser32
 
