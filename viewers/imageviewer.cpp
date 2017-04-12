@@ -302,7 +302,7 @@ void ImageViewer::drawTransparencyGrid() {
         for(int i = 0; i <= yCount; i++) {
             evenOdd = (i % 2);
             for(int j = 0; j <= xCount; j++) {
-                if(j % 2 == evenOdd)
+                if((j % 2) == evenOdd)
                     painter.fillRect(square, light);
                 square.translate(transparencyGridSize, 0);
             }

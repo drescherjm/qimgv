@@ -238,6 +238,7 @@ bool Settings::panelEnabled() {
 
 bool Settings::setPanelEnabled(bool mode) {
     settings->s.setValue("panelEnabled", mode);
+	return panelEnabled();
 }
 
 bool Settings::sidePanelEnabled() {
@@ -246,6 +247,7 @@ bool Settings::sidePanelEnabled() {
 
 bool Settings::setSidePanelEnabled(bool mode) {
     settings->s.setValue("sidePanelEnabled", mode);
+	return sidePanelEnabled();
 }
 
 int Settings::lastDisplay() {
@@ -254,6 +256,7 @@ int Settings::lastDisplay() {
 
 int Settings::setLastDisplay(int display) {
     settings->s.setValue("lastDisplay", display);
+	return lastDisplay();
 }
 
 PanelHPosition Settings::panelPosition() {
