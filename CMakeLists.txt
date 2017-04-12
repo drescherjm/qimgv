@@ -14,7 +14,9 @@ include_directories(res ${Qt5Widgets_INCLUDES} ${Qt5Concurrent_INCLUDES} ${Qt5Mu
 
 add_definitions(${Qt5Widgets_DEFINITIONS} ${Qt5Concurrent_DEFINITIONS} ${Qt5Multimedia_DEFINITIONS} ${Qt5MultimediaWidgets_DEFINITIONS})
 
+if( NOT MSVC)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS} ${Qt5Concurrent_EXECUTABLE_COMPILE_FLAGS} ${Qt5Multimedia_EXECUTABLE_COMPILE_FLAGS} ${Qt5MultimediaWidgets_EXECUTABLE_COMPILE_FLAGS} -std=c++11")
+endif(NOT MSVC)
 
 #add_subdirectory(tests)
 add_subdirectory(overlays)
