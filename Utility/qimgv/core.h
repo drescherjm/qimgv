@@ -8,10 +8,10 @@
 #include <QTimer>
 #include "directorymanager.h"
 #include "loader.h"
-#include "settings.h"
-#include "sourceContainers/imageanimated.h"
+#include "../../lib/settings.h"
+#include "../../sourceContainers/imageanimated.h"
 #include "wallpapersetter.h"
-#include "lib/stuff.h"
+#include "../../lib/stuff.h"
 
 class Core : public QObject
 {

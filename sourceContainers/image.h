@@ -3,8 +3,8 @@
 
 #include "../lib/imagelib.h"
 #include "../lib/stuff.h"
-#include "../fileinfo.h"
-#include "../settings.h"
+#include "../lib/fileinfo.h"
+#include "../lib/settings.h"
 #include <QObject>
 #include <QString>
 #include <QIODevice>

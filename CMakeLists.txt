@@ -18,6 +18,21 @@ if( NOT MSVC)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS} ${Qt5Concurrent_EXECUTABLE_COMPILE_FLAGS} ${Qt5Multimedia_EXECUTABLE_COMPILE_FLAGS} ${Qt5MultimediaWidgets_EXECUTABLE_COMPILE_FLAGS} -std=c++11")
 endif(NOT MSVC)
 
+#########################################################################################
+
+macro(SUBDIRLIST result curdir)
+  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
+  SET(dirlist "")
+  FOREACH(child ${children})
+    IF(IS_DIRECTORY ${curdir}/${child})
+        SET(dirlist ${dirlist} ${child})
+    ENDIF()
+  ENDFOREACH()
+  SET(${result} ${dirlist})
+endmacro()
+
+#########################################################################################
+
 #add_subdirectory(tests)
 add_subdirectory(overlays)
 add_subdirectory(lib)
@@ -26,20 +41,7 @@ add_subdirectory(sourceContainers)
 add_subdirectory(viewers)
 add_subdirectory(customWidgets)
 add_subdirectory(filesystemWatchers)
-
-FILE (GLOB SRC *.cpp)
-list (REMOVE_ITEM SRC moc_*.cpp)
-list (REMOVE_ITEM SRC *_automoc.cpp)
-
-QT5_WRAP_UI (GUI settingsdialog.ui)
-
-QT5_ADD_RESOURCES(RES resources.qrc)
-
-add_executable(qimgv ${SRC} ${RES} ${GUI})
-
-target_link_libraries(qimgv Qt5::Widgets Qt5::Concurrent overlays imagelib sourcecontainers viewers customwidgets thumbnailpanel filesystemWatchers)
-     
-qt5_use_modules (qimgv Core Widgets Concurrent)
+add_subdirectory(Utility)
 
 # binary
 install(PROGRAMS qimgv DESTINATION bin/)

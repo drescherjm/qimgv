@@ -7,7 +7,7 @@
 #include <QString>
 #include <QProcess>
 #include <QDebug>
-#include "lib/stuff.h"
+#include "../../lib/stuff.h"
 
 class WallpaperSetter
 {

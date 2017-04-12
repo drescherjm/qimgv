@@ -18,7 +18,7 @@
 #include <vector>
 #include "../sourceContainers/imagestatic.h"
 #include "../overlays/mapoverlay.h"
-#include "../settings.h"
+#include "../lib/settings.h"
 #include "../overlays/cropoverlay.h"
 #include <time.h>
 #include "../lib/imagelib.h"

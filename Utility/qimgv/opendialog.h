@@ -3,7 +3,7 @@
 
 #include <QFileDialog>
 #include <QDebug>
-#include "settings.h"
+#include "../../lib/settings.h"
 
 class OpenDialog : QObject
 {

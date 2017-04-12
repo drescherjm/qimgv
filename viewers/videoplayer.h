@@ -13,7 +13,7 @@
 #include <qvideosurfaceformat.h>
 #include <QDebug>
 #include "../sourceContainers/clip.h"
-#include "../settings.h"
+#include "../lib/settings.h"
 
 class VideoPlayer : public QGraphicsView
 {

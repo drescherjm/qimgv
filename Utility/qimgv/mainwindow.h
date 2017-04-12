@@ -7,18 +7,18 @@
 #include <QAction>
 #include <QBoxLayout>
 #include "core.h"
-#include "overlays/infooverlay.h"
-#include "overlays/controlsoverlay.h"
+#include "../../overlays/infooverlay.h"
+#include "../../overlays/controlsoverlay.h"
 #include "settingsdialog.h"
 #include "resizedialog.h"
-#include "viewers/imageviewer.h"
-#include "viewers/videoplayer.h"
-#include "settings.h"
-#include "actionmanager.h"
-#include "thumbnailPanel/thumbnailstrip.h"
-#include "customWidgets/slidevpanel.h"
-#include "customWidgets/slidehpanel.h"
-#include "customWidgets/toolbox.h"
+#include "../../viewers/imageviewer.h"
+#include "../../viewers/videoplayer.h"
+#include "../../lib/settings.h"
+#include "../../lib/actionmanager.h"
+#include "../../thumbnailPanel/thumbnailstrip.h"
+#include "../../customWidgets/slidevpanel.h"
+#include "../../customWidgets/slidehpanel.h"
+#include "../../customWidgets/toolbox.h"
 #include <time.h>
 
 QT_BEGIN_NAMESPACE

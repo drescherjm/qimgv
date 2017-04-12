@@ -3,7 +3,7 @@
 
 #include "directorymanager.h"
 #include "cache.h"
-#include "settings.h"
+#include "../../lib/settings.h"
 #include <QtConcurrent>
 #include <QMutex>
 #include "loaderrunnable.h"

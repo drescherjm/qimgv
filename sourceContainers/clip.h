@@ -5,7 +5,7 @@
 #include <QRect>
 #include <QTransform>
 #include <QProcess>
-#include "../settings.h"
+#include "../lib/settings.h"
 
 class Clip {
 public:

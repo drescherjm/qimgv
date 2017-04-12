@@ -9,7 +9,7 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <cmath>
-#include "lib/stuff.h"
+#include "stuff.h"
 
 enum fileType { NONE, STATIC, ANIMATED, VIDEO };
 

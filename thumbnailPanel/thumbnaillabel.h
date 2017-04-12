@@ -8,7 +8,7 @@
 #include <QPropertyAnimation>
 #include <ctime>
 #include "../sourceContainers/thumbnail.h"
-#include "../settings.h"
+#include "../lib/settings.h"
 
 enum loadState { EMPTY, LOADING, LOADED };
 

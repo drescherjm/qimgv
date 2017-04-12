@@ -1,12 +1,12 @@
 #ifndef IMAGECACHE_H
 #define IMAGECACHE_H
 
-#include "sourceContainers/imagestatic.h"
-#include "sourceContainers/imageanimated.h"
-#include "sourceContainers/video.h"
-#include "sourceContainers/thumbnail.h"
-#include "lib/imagelib.h"
-#include "settings.h"
+#include "../../sourceContainers/imagestatic.h"
+#include "../../sourceContainers/imageanimated.h"
+#include "../../sourceContainers/video.h"
+#include "../../sourceContainers/thumbnail.h"
+#include "../../lib/imagelib.h"
+#include "../../lib/settings.h"
 #include <QList>
 #include <QtConcurrent>
 #include <QMutex>

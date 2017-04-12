@@ -3,9 +3,9 @@
 
 #include <QRunnable>
 #include <QThread>
-#include <sourceContainers/thumbnail.h>
+#include "../../sourceContainers/thumbnail.h"
 #include "cache.h"
-#include <imagefactory.h>
+#include "imagefactory.h"
 
 class Thumbnailer : public QObject, public QRunnable
 {

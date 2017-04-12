@@ -16,9 +16,9 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QImageReader>
-#include "fileinfo.h"
-#include "settings.h"
-#include "filesystemWatchers/watcherwindows.h"
+#include "../../lib/fileinfo.h"
+#include "../../lib/settings.h"
+#include "../../filesystemWatchers/watcherwindows.h"
 
 class DirectoryManager : public QObject
 {

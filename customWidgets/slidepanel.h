@@ -10,7 +10,7 @@
 #include <QPainter>
 #include <QBoxLayout>
 #include <QPushButton>
-#include "../settings.h"
+#include "../lib/settings.h"
 #include <QDebug>
 
 class SlidePanel : public QWidget
