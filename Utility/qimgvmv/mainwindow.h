@@ -43,13 +43,14 @@ public slots:
     void setInfoString(QString);
     void readSettings();
     void enableImageViewer();
-    void enablePanel();
-    void disablePanel();
-    void enableSidePanel();
-    void disableSidePanel();
+//     void enablePanel();
+//     void disablePanel();
+//     void enableSidePanel();
+//     void disableSidePanel();
     void disableImageViewer();
     void slotCrop();
 	void scalingFinished(QPixmap* pImage, int nIndex);
+	void imageLoaded();
 
 signals:
     void signalFitAll();
@@ -86,16 +87,16 @@ private slots:
 	void openImage(QPixmap *pixmap, int nIndex);
 	void showSettings();
     void slotSelectWallpaper();
-    void calculatePanelTriggerArea();
+//	void calculatePanelTriggerArea();
     void updateCurrentDisplay();
 
 private:
     Core *core;
     //textOverlay *infoOverlay, *messageOverlay;
 	std::array<ControlsOverlay *,nImageViewers> m_AryControlsOverlay;
-    SlideHPanel *panel;
-    SlideVPanel *sidePanel;
-    ThumbnailStrip *thumbnailPanel;
+//     SlideHPanel *panel;
+//     SlideVPanel *sidePanel;
+//     ThumbnailStrip *thumbnailPanel;
     ClickableLabel *testButton;
     ToolBox *toolbox;
     int currentViewer; // 0 = none; 1 = imageViewer; 2 = VideoPlayer;
