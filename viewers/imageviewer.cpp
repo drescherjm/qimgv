@@ -119,8 +119,10 @@ void ImageViewer::displayAnimation(QMovie *_animation) {
 void ImageViewer::displayImage(QPixmap *_image) {
     closeImage();
     if(_image) {
-        image = _image;
-        readjust(image->size(), image->rect());
+		image = new QPixmap(*_image);
+		delete _image;
+		
+		readjust(image->size(), image->rect());
         if(settings->transparencyGrid())
             drawTransparencyGrid();
         update();
@@ -173,8 +175,11 @@ void ImageViewer::readjust(QSize _sourceSize, QRect _drawingRect) {
 
 // takes scaled image
 void ImageViewer::updateImage(QPixmap *scaled) {
-    delete image;
-    image = scaled;
+    //delete image;
+
+	QPixmap temp = scaled->copy();
+	image->swap(temp);
+
     if(transparencyGridEnabled)
         drawTransparencyGrid();
     update();
