@@ -43,10 +43,6 @@ public slots:
     void setInfoString(QString);
     void readSettings();
     void enableImageViewer();
-//     void enablePanel();
-//     void disablePanel();
-//     void enableSidePanel();
-//     void disableSidePanel();
     void disableImageViewer();
     void slotCrop();
 	void scalingFinished(QPixmap* pImage, int nIndex);
@@ -92,11 +88,7 @@ private slots:
 
 private:
     Core *core;
-    //textOverlay *infoOverlay, *messageOverlay;
 	std::array<ControlsOverlay *,nImageViewers> m_AryControlsOverlay;
-//     SlideHPanel *panel;
-//     SlideVPanel *sidePanel;
-//     ThumbnailStrip *thumbnailPanel;
     ClickableLabel *testButton;
     ToolBox *toolbox;
     int currentViewer; // 0 = none; 1 = imageViewer; 2 = VideoPlayer;
@@ -105,9 +97,9 @@ private:
     int lastEvent;
     //bool fullscreen; // separate flag because "borderless fullscreen" is actually a maximized window
     QGridLayout *layout;
-    PanelHPosition panelPosition;
-    PanelVPosition sidePanelPosition;
-    QRect panelArea, sidePanelArea;
+//     PanelHPosition panelPosition;
+//     PanelVPosition sidePanelPosition;
+//     QRect panelArea, sidePanelArea;
     QPoint lastMouseMovePos;
     void init();
     void saveWindowGeometry();

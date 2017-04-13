@@ -2,14 +2,12 @@
 
 MainWindow::MainWindow() :
 	m_AryImageViewers{},
-//     panel(NULL),
-//     sidePanel(NULL),
+	m_AryControlsOverlay{},
     toolbox(NULL),
     currentViewer(0),
     currentDisplay(0),
     layout(NULL),
-    desktopWidget(NULL)/*,
-    thumbnailPanel(NULL)*/
+    desktopWidget(NULL)
 {
     resize(1100, 700);
     setMinimumSize(QSize(400, 300));
@@ -37,8 +35,6 @@ void MainWindow::init() {
 	}
 
     QWidget *central = new QWidget();
-
-   // infoOverlay = new textOverlay(m_AryImageViewers[0]);
 
     layout = new QGridLayout;
     central->setAttribute(Qt::WA_MouseTracking);
@@ -84,17 +80,10 @@ void MainWindow::init() {
             this, SLOT(close()));
 	}
 
-
-//     connect(core, SIGNAL(videoChanged(Clip *)),
-//             this, SLOT(openVideo(Clip *)), Qt::UniqueConnection);
-// 
-//     connect(core, SIGNAL(stopVideo()),
-//             this, SLOT(disableVideoPlayer()));
-
     // Shortcuts
 
-    connect(actionManager, SIGNAL(nextImage()), core, SLOT(slotNextImage()));
-    connect(actionManager, SIGNAL(prevImage()), core, SLOT(slotPrevImage()));
+//     connect(actionManager, SIGNAL(nextImage()), core, SLOT(slotNextImage()));
+//     connect(actionManager, SIGNAL(prevImage()), core, SLOT(slotPrevImage()));
     connect(actionManager, SIGNAL(fitAll()), this, SLOT(slotFitAll()));
     connect(actionManager, SIGNAL(fitWidth()), this, SLOT(slotFitWidth()));
     connect(actionManager, SIGNAL(fitNormal()), this, SLOT(slotFitNormal()));
@@ -129,119 +118,9 @@ void MainWindow::init() {
     core->init();
 }
 
-// void MainWindow::enablePanel() {
-//     if(!thumbnailPanel) {
-//         thumbnailPanel = new ThumbnailStrip();
-//         if(!panel) {
-//             panel = new SlideHPanel(thumbnailPanel, this);
-//             panel->setPosition(panelPosition);
-//         }
-//     }
-// 
-//     connect(this, SIGNAL(resized(QSize)), panel, SLOT(parentResized(QSize)), Qt::UniqueConnection);
-// 
-//     connect(core, SIGNAL(imageChanged(int)),
-//             thumbnailPanel, SLOT(selectThumbnail(int)), Qt::UniqueConnection);
-// 
-//     connect(core, SIGNAL(itemRemoved(int)),
-//             thumbnailPanel, SLOT(removeItemAt(int)), Qt::UniqueConnection);
-// 
-//     connect(thumbnailPanel, SIGNAL(openImage(int)),
-//             core, SLOT(openByIndex(int)), Qt::UniqueConnection);
-// 
-//     connect(thumbnailPanel, SIGNAL(thumbnailRequested(int, long)),
-//             core, SIGNAL(thumbnailRequested(int, long)), Qt::UniqueConnection);
-// 
-//     connect(core, SIGNAL(thumbnailReady(long, Thumbnail *)),
-//             thumbnailPanel, SLOT(setThumbnail(long, Thumbnail *)), Qt::UniqueConnection);
-// 
-//     connect(core, SIGNAL(cacheInitialized(int)),
-//             thumbnailPanel, SLOT(fillPanel(int)), static_cast<Qt::ConnectionType>(Qt::DirectConnection | Qt::UniqueConnection));
-// 
-//     connect(panel, SIGNAL(panelSizeChanged()),
-//                this, SLOT(calculatePanelTriggerArea()), Qt::UniqueConnection);
-// 
-//     // TODO: fix this to apply on settings change
-//     connect(this, SIGNAL(signalFullscreenEnabled(bool)),
-//             thumbnailPanel, SLOT(setWindowControlsEnabled(bool)), Qt::UniqueConnection);
-//     connect(thumbnailPanel, SIGNAL(openClicked()), this, SLOT(slotOpenDialog()), Qt::UniqueConnection);
-//     connect(thumbnailPanel, SIGNAL(saveClicked()), this, SLOT(slotSaveDialog()), Qt::UniqueConnection);
-//     connect(thumbnailPanel, SIGNAL(settingsClicked()), this, SLOT(showSettings()), Qt::UniqueConnection);
-//     connect(thumbnailPanel, SIGNAL(exitClicked()), this, SLOT(close()), Qt::UniqueConnection);
-// 
-//     panel->parentResized(size());
-// }
-
-// void MainWindow::disablePanel() {
-//     if(!panel) {
-//         return;
-//     }
-//     disconnect(core, SIGNAL(imageChanged(int)),
-//             thumbnailPanel, SLOT(selectThumbnail(int)));
-// 
-//     disconnect(core, SIGNAL(itemRemoved(int)),
-//             thumbnailPanel, SLOT(removeItemAt(int)));
-// 
-//     disconnect(thumbnailPanel, SIGNAL(thumbnailClicked(int)),
-//             core, SLOT(openByIndex(int)));
-// 
-//     disconnect(thumbnailPanel, SIGNAL(thumbnailRequested(int, long)),
-//             core, SIGNAL(thumbnailRequested(int, long)));
-// 
-//     disconnect(core, SIGNAL(thumbnailReady(long, Thumbnail*)),
-//             thumbnailPanel, SLOT(setThumbnail(long, Thumbnail*)));
-// 
-//     disconnect(core, SIGNAL(cacheInitialized(int)),
-//             thumbnailPanel, SLOT(fillPanel(int)));
-// 
-//     disconnect(panel, SIGNAL(panelSizeChanged()),
-//                this, SLOT(calculatePanelTriggerArea()));
-// 
-//     disconnect(this, SIGNAL(signalFullscreenEnabled(bool)),
-//             thumbnailPanel, SLOT(setWindowControlsEnabled(bool)));
-// 
-//     disconnect(thumbnailPanel, SIGNAL(openClicked()), this, SLOT(slotOpenDialog()));
-//     disconnect(thumbnailPanel, SIGNAL(saveClicked()), this, SLOT(slotSaveDialog()));
-//     disconnect(thumbnailPanel, SIGNAL(settingsClicked()), this, SLOT(showSettings()));
-//     disconnect(thumbnailPanel, SIGNAL(exitClicked()), this, SLOT(close()));
-// 
-// }
-
-// void MainWindow::enableSidePanel() {
-//     if(!toolbox) {
-//         toolbox = new ToolBox();
-//         if(!sidePanel) {
-//             sidePanel = new SlideVPanel(toolbox, this);
-//             sidePanel->setPosition(sidePanelPosition);
-//         }
-//     }
-//     sidePanel->parentResized(size());
-//     connect(this, SIGNAL(resized(QSize)), sidePanel, SLOT(parentResized(QSize)), Qt::UniqueConnection);
-//     connect(toolbox, SIGNAL(rotateLeftClicked()), this, SLOT(slotRotateLeft()), Qt::UniqueConnection);
-//     connect(toolbox, SIGNAL(rotateRightClicked()), this, SLOT(slotRotateRight()), Qt::UniqueConnection);
-//     connect(toolbox, SIGNAL(zoomFitClicked()), this, SLOT(slotFitAll()), Qt::UniqueConnection);
-//     connect(toolbox, SIGNAL(zoomWidthClicked()), this, SLOT(slotFitWidth()), Qt::UniqueConnection);
-//     connect(toolbox, SIGNAL(zoomOriginalClicked()), this, SLOT(slotFitNormal()), Qt::UniqueConnection);
-// 
-// 	for (auto pImageViewer : m_AryImageViewers) 
-// 	{
-// 		connect(toolbox, SIGNAL(zoomInClicked()), pImageViewer, SLOT(slotZoomIn()), Qt::UniqueConnection);
-// 		connect(toolbox, SIGNAL(zoomOutClicked()), pImageViewer, SLOT(slotZoomOut()), Qt::UniqueConnection);
-// 	}
-// 
-// }
-
-// void MainWindow::disableSidePanel() {
-//     if(!sidePanel)
-//         return;
-//     disconnect(this, SIGNAL(resized(QSize)), sidePanel, SLOT(parentResized(QSize)));
-// }
-
 void MainWindow::enableImageViewer() {
     if(currentViewer != 1) {
-        //m_AryControlsOverlay->setParent(m_AryImageViewers[0]);
-        //infoOverlay->setParent(m_AryImageViewers[0]);
-       
+      
 		for (size_t i = 0; i < m_AryImageViewers.size();++i) {
 	
 			auto pImageViewer = m_AryImageViewers[i];
@@ -261,9 +140,6 @@ void MainWindow::enableImageViewer() {
 
 			connect(pImageViewer, SIGNAL(scalingRequested(QSize)),
 				core, SLOT(rescaleForZoom(QSize)), Qt::UniqueConnection);
-
-// 			connect(core, SIGNAL(scalingFinished(QPixmap *,int)),
-// 				pImageViewer, SLOT(updateImage(QPixmap *)), Qt::UniqueConnection);
 
 			connect(core, SIGNAL(scalingFinished(QPixmap *,int)),
 				this, SLOT(scalingFinished(QPixmap *,int)), Qt::UniqueConnection);
@@ -345,11 +221,18 @@ void MainWindow::disableImageViewer() {
 }
 
 void MainWindow::open(QString path) {
-    core->loadImageBlocking(path);
-// 	emit signalNextImage();
-// 	emit signalNextImage();
-// 	emit signalNextImage();
-// 	emit signalNextImage();
+   // core->loadImageBlocking(path);
+
+	QFileInfo info(path);
+
+	if (info.isDir()) {
+		core->loadFolder(path + '/',true);
+	}
+	else {
+		core->loadImage(path, true);
+	}
+
+	
 }
 
 void MainWindow::openImage(QPixmap *pixmap, int nIndex) {
@@ -370,10 +253,6 @@ void MainWindow::readSettingsInitial() {
 }
 
 void MainWindow::readSettings() {
-//     panelPosition = settings->panelPosition();
-//     sidePanelPosition = settings->sidePanelPosition();
-//     settings->panelEnabled()?enablePanel():disablePanel();
-//     settings->sidePanelEnabled()?enableSidePanel():disableSidePanel();
     fitMode = settings->imageFitMode();
     if(fitMode == 1) {
         slotFitWidth();
@@ -383,31 +262,7 @@ void MainWindow::readSettings() {
         slotFitAll();
     }
     emit resized(size());
-//    calculatePanelTriggerArea();
 }
-
-// void MainWindow::calculatePanelTriggerArea() {
-//     if(!settings->panelEnabled()) {
-//         panelArea.setRect(0,0,0,0);
-//     }
-//     else {
-//         if(panelPosition == TOP)
-//             panelArea.setRect(0, 0, width(), panel->height() - 1);
-//         if(panelPosition == BOTTOM)
-//             panelArea.setRect(0, height() - panel->height() + 1, width() - 180, height());
-//     }
-//     if(!settings->sidePanelEnabled()) {
-//         sidePanelArea.setRect(0,0,0,0);
-//     }
-//     else {
-//         if(sidePanelPosition == LEFT)
-//             sidePanelArea.setRect(0, height()/2 - toolbox->height()/2,
-//                                   30, toolbox->height()); // left
-//         if(sidePanelPosition == RIGHT)
-//             sidePanelArea.setRect(width() - 30, height()/2 - toolbox->height()/2,
-//                                   width(), toolbox->height()); // right
-//     }
-// }
 
 void MainWindow::updateOverlays() {
     //m_AryControlsOverlay->updatePosition(this->centralWidget()->size());
@@ -426,9 +281,7 @@ void MainWindow::updateOverlays() {
 
 void MainWindow::resizeEvent(QResizeEvent *event) {
     Q_UNUSED(event)
-//     if(panel) {
-//         emit resized(size());
-//     }
+
     updateOverlays();
 }
 
@@ -438,14 +291,6 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event) {
     if(event->buttons() != Qt::RightButton && event->buttons() != Qt::LeftButton) {
-//         if(panelArea.contains(event->pos()) && panel && !panelArea.contains(lastMouseMovePos))
-//         {
-//             panel->show();
-//         }
-//         if(sidePanelArea.contains(event->pos()) && sidePanel && !sidePanelArea.contains(lastMouseMovePos))
-//         {
-//             sidePanel->show();
-//         }
         event->ignore();
     }
     lastMouseMovePos = event->pos();

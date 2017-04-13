@@ -28,6 +28,8 @@ public:
 public slots:
     void updateInfoString();
 
+	void loadFolder(QString strFolder, bool blocking);
+
     void loadImage(QString filePath, bool blocking);
 
     // loads image in second thread

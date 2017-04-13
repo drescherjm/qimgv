@@ -81,6 +81,24 @@ void Core::initCache() {
         cache->init(dirManager->currentDirectory(), &filePaths);
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
+void Core::loadFolder(QString strFolder, bool blocking)
+{
+	QFileInfo info(strFolder);
+
+	if (info.isDir()) {
+		dirManager->setDirectory(info.absolutePath());
+		initCache();
+
+		if (dirManager->fileCount() >0) {
+			loadImage(dirManager->filePathAt(0), blocking);
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
 void Core::loadImage(QString filePath, bool blocking) {
     if(dirManager->isImage(filePath)) {
         FileInfo *info = new FileInfo(filePath);
@@ -334,3 +352,5 @@ void Core::crop(QRect newRect) {
 void Core::readSettings() {
     infiniteScrolling = settings->infiniteScrolling();
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////
