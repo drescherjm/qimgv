@@ -1,3 +1,11 @@
+QWidget {
+	background-color: #262626;
+} 
+
+/* ImageViewer {
+	background-color: #000000;
+} */
+
 [accessibleName="panelButton"] {
     background-color: #262626;
     padding: 3px 3px 3px 3px;
@@ -20,7 +28,8 @@
 }
 
 GraphicsView {
-    background-color: #262626;
+    /*background-color: #262626;*/
+	background-color: #000000;
     border-style: none;
 }
 
