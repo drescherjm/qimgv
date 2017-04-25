@@ -43,6 +43,8 @@ void MainWindow::init() {
     sizePolicy.setVerticalStretch(0);
     central->setSizePolicy(sizePolicy);
     layout->setContentsMargins(0, 0, 0, 0);
+	layout->setHorizontalSpacing(3);
+	layout->setVerticalSpacing(3);
     central->setLayout(layout);
     this->setCentralWidget(central);
     windowMoveTimer.setSingleShot(true);

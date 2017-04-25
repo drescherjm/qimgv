@@ -294,28 +294,28 @@ void ImageViewer::resizeImage() {
 }
 
 void ImageViewer::drawTransparencyGrid() {
-    if(image && image->hasAlphaChannel()) {
-        QPainter painter(image);
-        painter.setCompositionMode(QPainter::CompositionMode_DestinationOver);
-        QColor dark(90,90,90,255);
-        QColor light(140,140,140,255);
-        int xCount, yCount;
-        xCount = image->width() / transparencyGridSize;
-        yCount = image->height() / transparencyGridSize;
-        QRect square(0, 0, transparencyGridSize, transparencyGridSize);
-        bool evenOdd;
-        for(int i = 0; i <= yCount; i++) {
-            evenOdd = (i % 2);
-            for(int j = 0; j <= xCount; j++) {
-                if((j % 2) == evenOdd)
-                    painter.fillRect(square, light);
-                square.translate(transparencyGridSize, 0);
-            }
-            square.translate(0, transparencyGridSize);
-            square.moveLeft(0);
-        }
-        painter.fillRect(image->rect(), dark);
-    }
+//     if(image && image->hasAlphaChannel()) {
+//         QPainter painter(image);
+//         painter.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+//         QColor dark(90,90,90,255);
+//         QColor light(140,140,140,255);
+//         int xCount, yCount;
+//         xCount = image->width() / transparencyGridSize;
+//         yCount = image->height() / transparencyGridSize;
+//         QRect square(0, 0, transparencyGridSize, transparencyGridSize);
+//         bool evenOdd;
+//         for(int i = 0; i <= yCount; i++) {
+//             evenOdd = (i % 2);
+//             for(int j = 0; j <= xCount; j++) {
+//                 if((j % 2) == evenOdd)
+//                     painter.fillRect(square, light);
+//                 square.translate(transparencyGridSize, 0);
+//             }
+//             square.translate(0, transparencyGridSize);
+//             square.moveLeft(0);
+//         }
+//         painter.fillRect(image->rect(), dark);
+//     }
 }
 
 // ##################################################

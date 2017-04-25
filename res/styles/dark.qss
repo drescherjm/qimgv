@@ -1,5 +1,5 @@
 QWidget {
-	background-color: #262626;
+	background-color: #404040;
 } 
 
 /* ImageViewer {
